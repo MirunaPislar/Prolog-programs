@@ -58,7 +58,7 @@ packAcc([_, Elem|List], Acc1, Pack, Acc2) :-
 																					
 % P10 (*) Run-length encoding of a list.
 encode(List, Encoded) :- pack(List, Pack), 
-										encode_each(Pack,Encoded,[]),!.
+		encode_each(Pack,Encoded,[]),!.
 encode_each([], Acc, Acc).
 encode_each([H|T], Encoded, Acc) :- [H1|_] = H, len(H, N),
 		append(Acc,[[N, H1]], AccNew),
@@ -116,7 +116,7 @@ dupli(List, N, Dupl) :- dupliAcc(List, N, [], Dupl).
 dupliAcc([], _, Acc, Acc).
 dupliAcc([H|T], N, Acc, Dupl) :- expand(H, N, Res),
 		append(Acc, Res, AccNew),
-										dupliAcc(T, N, AccNew, Dupl).
+		dupliAcc(T, N, AccNew, Dupl).
 
 % P16 (**) Drop every N'th element from a list.
 drop(List, N, Drop) :- drop(List,N,1,[],Drop),!.
